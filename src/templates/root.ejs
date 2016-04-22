@@ -1,20 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Webpack Study</title>
   </head>
   <body>
-    <h1>Hello Webpack</h1>
-    
-    <% if (htmlWebpackPlugin.options.foo) { %>
-      FOO
-      <% } %>
-      <!--
-        Using EJS enables allows the user of includes. Common templates
-        can be included for maintainability.
-    -->
-    <%- include partials/test -%>
-    <%- include partials/_footer_common -%>
+     <div class="outerContainer">
+       <!--
+         Using EJS enables allows the user of includes. Common templates
+         can be included for maintainability.
+     -->
+       <%- include partials/test -%>
+       <%- include partials/_footer_common -%>
+     </div>
+
   </body>
 </html>

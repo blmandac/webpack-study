@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run-server": "webpack-dev-server --hot --open --content-base dist/"
   },
   "author": "",
   "license": "ISC",
@@ -24,7 +25,9 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
+    "bourbon": "^4.2.7",
     "ejs-compiled-loader": "^2.1.1",
-    "ejs-loader": "^0.2.1"
+    "ejs-loader": "^0.2.1",
+    "neat": "^1.2.2"
   }
 }

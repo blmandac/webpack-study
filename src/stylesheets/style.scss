@@ -1,6 +1,9 @@
-@import "base/type";
+@import "bourbon/bourbon";
+@import "neat/neat";
+/**
+  Prepend import path with ~ to signify loading from node_modules folder.
+  Feature provided by sass-loader
+*/
+@import "~eric-meyer-reset.scss/reset";
 
-html, body {
-  padding: 0;
-  margin: 0;
-}
+@import "base/type";

@@ -1,5 +1,5 @@
+var path = require("path");
 var HtmlPlugin = require('html-webpack-plugin');
-
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
@@ -14,12 +14,12 @@ module.exports = {
     Entry points are aliases for pages.
   */
   entry: {
-    '/home' : './src/index.js',
-    '/about' : './src/about.js'
+    '/home' : './src/js/index.js',
+    '/about' : './src/js/about.js'
   },
   output: {
     path: 'dist',
-    filename: '[name].bundle.js'
+    filename: '/assets/js/[name].bundle.js'
   },
   plugins: [
     /**
@@ -40,7 +40,7 @@ module.exports = {
         In this case, only include files related to the '/home' chunk.
       */
       chunks: ['/home'],
-      hash: true,
+      hash: true, //append hash to filename for cache-busting
       inject: 'body',
       foo: true
     }),
@@ -50,10 +50,16 @@ module.exports = {
       chunks: ['/about'],
     }),
     /**
+      Webpack's default behavior for stylesheets is to inline them w/ the pages
+      ie create a <style> tag in <head> and inject the styles required in JS.
+
+      Using ExtractTextPlugin will override said behavior and will output individual
+      stylesheets.
+
       Settings for extracted css here
     */
-    new ExtractTextPlugin('stylesheets/[name].css', {
-      publicPath: 'stylesheets/',
+    new ExtractTextPlugin('assets/stylesheets/[name].css', {
+      publicPath: 'assets/stylesheets/',
       allChunks: true
     })
   ],
@@ -68,6 +74,15 @@ module.exports = {
         test: /\.scss$/i,
         loader: ExtractTextPlugin.extract('style','css!sass')
       }
+    ]
+  },
+  resolve: {
+    /**
+      Resolve path to /src so imports/requires can get modules w/o knowledge
+      of module directory
+    */
+    root: [
+      path.resolve('./src')
     ]
   }
 };
