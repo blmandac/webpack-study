@@ -10,6 +10,9 @@ module.exports = {
   customData : {
     env: 'development'
   },
+  /**
+    Entry points are aliases for pages.
+  */
   entry: {
     '/home' : './src/index.js',
     '/about' : './src/about.js'
@@ -20,7 +23,11 @@ module.exports = {
   },
   plugins: [
     /**
-      Place generated HTML pages here
+      ejs-compiled loader takes care of processing .ejs files before
+      the html-webpack-plugin takes over and writes the resulting html
+      into a file
+
+      Place generated HTML pages here.
     */
     new HtmlPlugin({
       /**
